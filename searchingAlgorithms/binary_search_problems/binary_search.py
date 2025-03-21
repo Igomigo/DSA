@@ -1,5 +1,7 @@
-# Binary search algorithm
 def binary_search(list, item):
+    # Binary search algorithm
+    # Time complexity: O(log n) = logarithmic Time
+    
     low = 0
     high = len(list) - 1
 
