@@ -16,9 +16,25 @@ class LinkedList {
     print() {
         // Prints all nodes
         let current = this.head;
-        while(current != null) {
+        console.log("Nodes:");
+        while(current !== null) {
             console.log(current.data);
             current = current.next;
         }
     }
+
+    insertAtHead(data) {
+        const newNode = new Node(data);
+        newNode.next = this.head;
+        this.head = newNode;
+        this.size++;  // Increment the node count
+    }
 }
+
+// Example Usage:
+const list = new LinkedList();
+list.insertAtHead(5);
+list.print()
+list.insertAtHead(10);
+list.print()
+console.log("List size:", list.size);
