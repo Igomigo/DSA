@@ -24,17 +24,35 @@ class LinkedList {
     }
 
     insertAtHead(data) {
+        // Inserts a new node at the head
         const newNode = new Node(data);
         newNode.next = this.head;
         this.head = newNode;
         this.size++;  // Increment the node count
+    }
+
+    insertAtTail(data) {
+        // Inserts a new node at the tail
+        const newNode = new Node(data);
+
+        if (this.head === null) {
+            this.head = newNode;
+        } else {
+            let current = this.head;
+            while(current.next !== null) {
+                current = current.next;
+            }
+            current.next = newNode;
+        }
+        this.size++;
     }
 }
 
 // Example Usage:
 const list = new LinkedList();
 list.insertAtHead(5);
-list.print()
 list.insertAtHead(10);
-list.print()
-console.log("List size:", list.size);
+list.print();
+list.insertAtTail(15);
+list.insertAtTail(20);
+list.print();
