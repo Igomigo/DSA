@@ -34,7 +34,6 @@ class LinkedList {
     insertAtTail(data) {
         // Inserts a new node at the tail
         const newNode = new Node(data);
-
         if (this.head === null) {
             this.head = newNode;
         } else {
@@ -46,6 +45,34 @@ class LinkedList {
         }
         this.size++;
     }
+
+    insertAt(data, index) {
+        // Insert at a specific position(index)
+        if (index < 0 || index > this.size) return;
+
+        // Check if the head is the position
+        if (index === 0) {
+            this.insertAtHead(data);
+            return;
+        }
+
+        // Initialize the placeholders
+        let newNode = new Node(data);
+        let current = this.head;
+        let previous = null;
+        let count = 0;
+
+        // Loop through to the index position
+        while (count < index) {
+            previous = current;
+            current = current.next;
+            count++;
+        }
+
+        // Update the list
+        newNode.next = current;
+        previous.next = newNode;
+    }
 }
 
 // Example Usage:
@@ -55,4 +82,6 @@ list.insertAtHead(10);
 list.print();
 list.insertAtTail(15);
 list.insertAtTail(20);
+list.print();
+list.insertAt(14, 2);
 list.print();
